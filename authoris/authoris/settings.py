@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'userlist.apps.UserlistConfig'
+    'userlist'
+   
 ]
 
 MIDDLEWARE = [
@@ -77,7 +78,7 @@ WSGI_APPLICATION = 'authoris.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'authorisuserdb',
+        'NAME': 'test_db_auch',
         'USER': 'postgres',
         'PASSWORD': 'root2002',
         'HOST': 'localhost',
@@ -127,4 +128,4 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'userlist.User_employe'
+#AUTH_USER_MODEL = 'userlist.User_employe'
