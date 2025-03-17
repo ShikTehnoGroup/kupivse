@@ -1,0 +1,9 @@
+{% extends "userlist/base.html" %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+    <h1>Welcome!</h1>
+    <p>Your account has been successfully created. Your username is: <strong>{{ usermail }}</strong>.
+        Now you can <a href="{% url "login" %}?username={{ username }}">log in</a>.</p>
+{% endblock %}

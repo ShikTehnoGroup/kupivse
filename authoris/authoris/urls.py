@@ -21,16 +21,5 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('userlist/', include('userlist.urls', namespace='userlist')),
 ]
-
-# ### ####### #### ####
-
-urlpatterns += [
-     path('userlist/', include('userlist.urls')),
-]
-# ### ####### #### ####
-urlpatterns += [
-    path('', RedirectView.as_view(url='/userlist/', permanent=True)),
-]
-
-#urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
