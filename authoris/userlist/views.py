@@ -1,11 +1,14 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import UserRegistrationForm , LoginForm
 from django.contrib.auth.models import User
-from django.contrib.auth import get_user_model, authenticate,login
+from django.contrib.auth import get_user_model, authenticate,login,authenticate
 from django.contrib import messages
 
 
 User = get_user_model()
+
+def index(request):
+    return render(request, 'userlist/index.html')
 
 def home(request):
     return render(request, 'userlist/home.html')
@@ -18,17 +21,10 @@ def user_login(request):
             password = form.cleaned_data['password']
             user = authenticate(request, email=email, password=password)
             if user is not None:
-                print("User authenticated:", user.email)  # Отладочный вывод
-                if user.is_active:
-                    login(request, user)
-                    messages.success(request, 'Вы успешно вошли в систему.')
-                    return redirect('userlist:home')  # Редирект на домашнюю страницу
-                else:
-                    messages.error(request, 'Ваша учетная запись отключена.')
+                login(request, user)
+                return redirect('userlist:home')
             else:
-                messages.error(request, 'Неверный логин или пароль.')
-        else:
-            messages.error(request, 'Пожалуйста, исправьте ошибки в форме.')
+                form.add_error(None, 'Неверный логин или пароль.')
     else:
         form = LoginForm()
     return render(request, 'userlist/login.html', {'form': form})

@@ -1,0 +1,27 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased; /* Для WebKit-браузеров */
+    -moz-osx-font-smoothing: grayscale; /* Для Firefox на macOS */
+    background-color: #F0F5F7;
+}
+
+.header {
+    background: rgb(137,203,246);
+    background: linear-gradient(180deg, rgba(137,203,246,1) 4%, rgba(241,253,255,1) 100%);
+    font-size: 2.5rem; /* Используем rem для адаптивности */
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+.h1-test-bold{
+    font-style: italic;
+}

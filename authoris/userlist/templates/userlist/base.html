@@ -2,12 +2,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{% block title %} My Site {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'userlist/css/styles.css' %}">
+    <title>{% block title %} Virtual Pretty Network {% endblock %}</title>
 </head>
-<body>
-<div id="content">
+<body id="content">
+
     {% block content %}
     {% endblock %}
-</div>
+
 </body>
 </html>
