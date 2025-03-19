@@ -20,11 +20,15 @@ def user_login(request):
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
             user = authenticate(request, email=email, password=password)
-            if user is not None:
+            if user is not None and user.is_active:
                 login(request, user)
                 return redirect('userlist:home')
             else:
-                form.add_error(None, 'Неверный логин или пароль.')
+                if user is None:
+                    form.add_error(None, 'Неверный логин или пароль.')
+                elif not user.is_active:
+                    form.add_error(None, 'Ваш аккаунт неактивен.')
+                    print(form.non_field_errors)
     else:
         form = LoginForm()
     return render(request, 'userlist/login.html', {'form': form})

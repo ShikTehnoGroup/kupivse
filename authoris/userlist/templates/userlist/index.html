@@ -1,16 +1,44 @@
+
 {% extends 'userlist/base.html' %}
 
 {% block content %}
 <header class="header">
-  <div>
-    <h1 class="h1-test-bold">Добро пожаловать на сайт!</h1>
+  <div class="div-header">
+    <a></a>
+    <div>
+      <nav>
+        <ul>
+          <!--  -->
+          <li> 
+            <button>
+              <h1> Преимущества Pretty VPN</h1>  
+            </button>
+          </li>
+          <li>
+            <h1>Цены</h1>
+          </li>
+          <li>
+            <h1>Скачать</h1>
+          </li>
+          <li>
+            <h1><a href="{% url 'userlist:register' %}">Регистрация</a></h1>
+          </li>
+          <li>
+            <h1><a href="{% url 'userlist:login' %}">Вход</a></h1>
+          </li>
+          <!--  -->
+        </ul>
+      </nav>
+    </div>
   </div>
 </header>  
-<section>
+<section class="sec-pass">
   <div>
-    <p>Вы можете зарегистрироваться или войти в систему.</p>
-    <a href="{% url 'userlist:register' %}">Регистрация</a>
-    <a href="{% url 'userlist:login' %}">Вход</a>
-    </div>
+    контент текстом  
+  </div>
+  <div>
+    какая-то картинка 
+  </div>
 </section>
+
 {% endblock %}
