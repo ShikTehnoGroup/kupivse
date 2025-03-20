@@ -4,27 +4,27 @@
 {% block content %}
 <header class="header">
   <div class="div-header">
-    <a></a>
+    <a class="first-item"></a>
     <div>
       <nav>
         <ul>
           <!--  -->
           <li> 
-            <button>
-              <h1> Преимущества Pretty VPN</h1>  
+            <button >
+              <h1 class="hover-header-elem"> Преимущества Pretty VPN</h1>  
             </button>
           </li>
-          <li>
-            <h1>Цены</h1>
+          <li class="li-prices">
+            <h1 class="hover-header-elem">Цены</h1>
           </li>
           <li>
-            <h1>Скачать</h1>
+            <h1 class="hover-header-elem">Скачать</h1>
           </li>
           <li>
-            <h1><a href="{% url 'userlist:register' %}">Регистрация</a></h1>
+            <h1 class="hover-header-elem"><a href="{% url 'userlist:register' %}">Регистрация</a></h1>
           </li>
           <li>
-            <h1><a href="{% url 'userlist:login' %}">Вход</a></h1>
+            <h1 class="hover-header-elem"><a href="{% url 'userlist:login' %}">Вход</a></h1>
           </li>
           <!--  -->
         </ul>

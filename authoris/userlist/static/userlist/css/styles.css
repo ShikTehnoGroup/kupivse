@@ -11,6 +11,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: min(0.1em, 1%);
+  margin-bottom: 1em;
 }
 
 .div-header {
@@ -18,7 +19,8 @@ body {
   border-radius: 1em;
   margin-left: 2em;
   margin-right: 2em;
-  background: linear-gradient(to bottom, white 55%, #6c1996);
+  background: white;
+  padding-left: 1em;
 }
 
 .header button {
@@ -43,22 +45,38 @@ body {
   padding: 0;
 }
 
-.header nav ul li {
-  margin-right: 20px;
-}
-
-.header nav ul li:last-child {
-  margin-right: 0;
-}
-
-.header h1 {
-  color: #31269c;
-}
-
 .header a {
   color: inherit;
   text-decoration: none;
 }
+
+.li-prices{
+    color: #978DFD;
+}
+.first-item{
+    padding: 0px 0em 0px 1em; 
+}
+.hover-header-elem{
+    will-change: transform;
+    color: #31269c;
+    font-size: 1.4em;
+    border-radius: 0.5em;
+    margin: 1em 0.7em 1em 0.7em; /* верхний, правый, нижний, левый */
+    padding: 0px 0.3em 0px 0.3em; /* верхний, правый, нижний, левый */
+    transition: background-color 0.5s, 
+                color 0.45s, border-radius 0.45s, transform 0.45s,padding 0.45s;
+                /* margin-bottom 0.2s,  margin-top 0.2s; */
+}
+.hover-header-elem:hover{
+    background-color: #6C1996;
+    color: #ffffff;
+    border-radius: 1em;
+    transform: scale(1.2);
+    /* margin-top: 0.7em; 
+    margin-bottom: 0.3em; */
+}
+
+
 .sec-pass {
   width: 100%;
   display: flex;
@@ -72,6 +90,7 @@ body {
   margin-left: 1em;
   margin-right: 1em;
   flex-basis: 45%;
-  border: 10px solid #0d0d0e;
+  border: 0.3em solid #978DFD;
+  background-color: #978DFD;
   border-radius: 1em;
 }
