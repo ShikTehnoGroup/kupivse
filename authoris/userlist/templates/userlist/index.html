@@ -21,7 +21,7 @@
             <h1 class="hover-header-elem">Скачать</h1>
           </li>
           <li>
-            <h1 class="hover-header-elem"><a href="{% url 'userlist:register' %}">Регистрация</a></h1>
+            <h1 class="hover-header-elem"><a href="#" id="openModal" data-url="{% url 'userlist:register' %}">Регистрация</a></h1>
           </li>
           <li>
             <h1 class="hover-header-elem"><a href="{% url 'userlist:login' %}">Вход</a></h1>
@@ -41,4 +41,17 @@
   </div>
 </section>
 
+
+<!-- Модальное окно -->
+<div id="registrationModal" class="modal">
+  <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Регистрация</h2>
+      <div id="modalFormContent">
+          <!-- Здесь будет загружена форма регистрации -->
+      </div>
+  </div>
+</div>
 {% endblock %}
+
+

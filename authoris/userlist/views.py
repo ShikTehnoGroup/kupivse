@@ -33,23 +33,44 @@ def user_login(request):
         form = LoginForm()
     return render(request, 'userlist/login.html', {'form': form})
 
+def new_user_login(request, user):
+    # Используем кастомный бэкенд для аутентификации
+    email = user.email
+    password = user.password  # Убедитесь, что вы используете правильный способ получения пароля
+
+    # Аутентификация через кастомный бэкенд
+    authenticated_user = authenticate(request, email=email, password=password)
+    
+    if authenticated_user is not None:
+        login(request, authenticated_user)  # Вход в систему
+    else:
+        print("Аутентификация не удалась")
 
 
 def user_list(request):
     users = User.objects.all()
     return render(request, 'userlist/user_list.html', {'users': users})
 
+from django.http import JsonResponse
+from .forms import UserRegistrationForm
+
 def register(request):
     if request.method == 'POST':
         user_form = UserRegistrationForm(request.POST)
         if user_form.is_valid():
-            # Create a new user object but avoid saving it yet
+            # Создаем новый объект пользователя, но не сохраняем его сразу
             new_user = user_form.save(commit=False)
-            # Set the chosen password
+            # Устанавливаем выбранный пароль
             new_user.set_password(user_form.cleaned_data['password'])
-            # Save the User object
+            # Сохраняем объект пользователя
             new_user.save()
-            return render(request, 'userlist/register_done.html', {'new_user': new_user, 'usermail': new_user.email})
+            
+            new_user_login(request, new_user)
+            # Возвращаем JSON-ответ
+            return JsonResponse({'success': True, 'message': 'Регистрация успешна!', 'redirect_url': '/userlist/home'})
+        else:
+            # Возвращаем ошибки валидации в JSON-формате
+            return JsonResponse({'success': False, 'errors': user_form.errors}, status=400)
     else:
         user_form = UserRegistrationForm()
     return render(request, 'userlist/register.html', {'user_form': user_form})

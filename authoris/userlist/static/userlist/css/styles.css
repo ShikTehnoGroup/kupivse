@@ -50,32 +50,31 @@ body {
   text-decoration: none;
 }
 
-.li-prices{
-    color: #978DFD;
+.li-prices {
+  color: #978dfd;
 }
-.first-item{
-    padding: 0px 0em 0px 1em; 
+.first-item {
+  padding: 0px 0em 0px 1em;
 }
-.hover-header-elem{
-    will-change: transform;
-    color: #31269c;
-    font-size: 1.4em;
-    border-radius: 0.5em;
-    margin: 1em 0.7em 1em 0.7em; /* верхний, правый, нижний, левый */
-    padding: 0px 0.3em 0px 0.3em; /* верхний, правый, нижний, левый */
-    transition: background-color 0.5s, 
-                color 0.45s, border-radius 0.45s, transform 0.45s,padding 0.45s;
-                /* margin-bottom 0.2s,  margin-top 0.2s; */
+.hover-header-elem {
+  will-change: transform;
+  color: #31269c;
+  font-size: 1.4em;
+  border-radius: 0.5em;
+  margin: 1em 0.7em 1em 0.7em; /* верхний, правый, нижний, левый */
+  padding: 0px 0.3em 0px 0.3em; /* верхний, правый, нижний, левый */
+  transition: background-color 0.5s, color 0.45s, border-radius 0.45s,
+    transform 0.45s, padding 0.45s;
+  /* margin-bottom 0.2s,  margin-top 0.2s; */
 }
-.hover-header-elem:hover{
-    background-color: #6C1996;
-    color: #ffffff;
-    border-radius: 1em;
-    transform: scale(1.2);
-    /* margin-top: 0.7em; 
+.hover-header-elem:hover {
+  background-color: #6c1996;
+  color: #ffffff;
+  border-radius: 1em;
+  transform: scale(1.2);
+  /* margin-top: 0.7em; 
     margin-bottom: 0.3em; */
 }
-
 
 .sec-pass {
   width: 100%;
@@ -90,7 +89,42 @@ body {
   margin-left: 1em;
   margin-right: 1em;
   flex-basis: 45%;
-  border: 0.3em solid #978DFD;
-  background-color: #978DFD;
+  border: 0.3em solid #978dfd;
+  background-color: #978dfd;
   border-radius: 1em;
+}
+
+.modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed; /* Остается на месте */
+    z-index: 1000; /* Убедитесь, что это значение достаточно высокое, чтобы быть поверх других элементов */
+    left: 0;
+    top: 0;
+    width: 100%; /* Полная ширина */
+    height: 100%; /* Полная высота */
+    overflow: auto; /* Включает прокрутку, если необходимо */
+    background-color: rgba(0, 0, 0, 0.5); /* Черный фон с прозрачностью */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% сверху и центрирование */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Ширина */
+    max-width: 600px; /* Максимальная ширина для больших экранов */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
