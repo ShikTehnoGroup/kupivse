@@ -33,18 +33,7 @@ def user_login(request):
         form = LoginForm()
     return render(request, 'userlist/login.html', {'form': form})
 
-def new_user_login(request, user):
-    # Используем кастомный бэкенд для аутентификации
-    email = user.email
-    password = user.password  # Убедитесь, что вы используете правильный способ получения пароля
 
-    # Аутентификация через кастомный бэкенд
-    authenticated_user = authenticate(request, email=email, password=password)
-    
-    if authenticated_user is not None:
-        login(request, authenticated_user)  # Вход в систему
-    else:
-        print("Аутентификация не удалась")
 
 
 def user_list(request):
@@ -65,7 +54,7 @@ def register(request):
             # Сохраняем объект пользователя
             new_user.save()
             
-            new_user_login(request, new_user)
+            login(request, new_user)
             # Возвращаем JSON-ответ
             return JsonResponse({'success': True, 'message': 'Регистрация успешна!', 'redirect_url': '/userlist/home'})
         else:

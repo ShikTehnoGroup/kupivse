@@ -3,11 +3,22 @@
 {% block title %}Create an account{% endblock %}
 
 {% block content %}
-    <h1>Create an account</h1>
-    <p>Please, sign up using the following form:</p>
+    <h1>Создать аккаунт</h1>
+    <p>Введите почту и придумайте пароль</p>
     <form id="registrationForm" action="." method="post">
-        {{ user_form.as_p }}
         {% csrf_token %}
-        <p> <input type="submit" value="Зарегистрироваться"> </p>
+        <div class="form-group">
+            <label for="id_email">Email:</label>
+            {{ user_form.email }}  <!-- Изменено на user_form -->
+        </div>
+        <div class="form-group">
+            <label for="id_password">Password:</label>
+            {{ user_form.password }}  <!-- Изменено на user_form -->
+        </div>
+        <div class="form-group">
+            <label for="id_password_confirm">Confirm Password:</label>
+            {{ user_form.password_confirm }}  <!-- Изменено на user_form -->
+        </div>
+        <button type="submit">Register</button>
     </form>
 {% endblock %}

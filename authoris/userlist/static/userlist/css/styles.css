@@ -95,36 +95,67 @@ body {
 }
 
 .modal {
-    display: none; /* Скрыто по умолчанию */
-    position: fixed; /* Остается на месте */
-    z-index: 1000; /* Убедитесь, что это значение достаточно высокое, чтобы быть поверх других элементов */
-    left: 0;
-    top: 0;
-    width: 100%; /* Полная ширина */
-    height: 100%; /* Полная высота */
-    overflow: auto; /* Включает прокрутку, если необходимо */
-    background-color: rgba(0, 0, 0, 0.5); /* Черный фон с прозрачностью */
+  display: none; /* Скрыто по умолчанию */
+  position: fixed; /* Остается на месте */
+  z-index: 1000; /* Убедитесь, что это значение достаточно высокое, чтобы быть поверх других элементов */
+  left: 0;
+  top: 0;
+  width: 100%; /* Полная ширина */
+  height: 100%; /* Полная высота */
+  overflow: auto; /* Включает прокрутку, если необходимо */
+  background-color: rgba(0, 0, 0, 0.5); /* Черный фон с прозрачностью */
 }
 
 .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% сверху и центрирование */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Ширина */
-    max-width: 600px; /* Максимальная ширина для больших экранов */
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% сверху и центрирование */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Ширина */
+  max-width: 600px; /* Максимальная ширина для больших экранов */
 }
 
 .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #5cb85c;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #4cae4c;
 }

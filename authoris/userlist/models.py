@@ -58,3 +58,15 @@ class Users(AbstractBaseUser):
         "Is the user a member of staff?"
         # Simplest possible answer: All admins are staff
         return self.is_admin
+
+class users_AuthLog (models.Model):
+    users = models.ForeignKey(Users, on_delete=models.CASCADE) 
+    timestamp = models.DateTimeField(auto_now_add=True)
+    event_type = models.CharField(max_length=10, choices=[('login','Login'),('logout','Logout')])
+    ip_address = models.GenericIPAddressField()
+    user_browser = models.TextField()
+    success = models.BooleanField(default=True)
+    location = models.CharField(max_length=255, blank=True, null=True)
+    
+    def __str__(self):
+        return f"{self.user.email} - {self.event_type} at {self.timestamp}"

@@ -6,16 +6,16 @@ class LoginForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput)  # Поле для пароля
 
 class UserRegistrationForm(forms.ModelForm):
-    password = forms.CharField(label='Password', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Repeat password', widget=forms.PasswordInput)
+    password = forms.CharField(widget=forms.PasswordInput, label="Password")
+    password_confirm = forms.CharField(widget=forms.PasswordInput, label="Confirm Password")
 
     class Meta:
         model = Users
-        fields = ('email', 'password', 'password2')
+        fields = ['email', 'password', 'password_confirm']
 
-    def clean_password2(self):
+    def clean_password_confirm(self):
         cd = self.cleaned_data
-        if cd['password'] != cd['password2']:
+        if cd['password'] != cd['password_confirm']:  # Исправлено на password_confirm
             raise forms.ValidationError('Passwords don\'t match.')
-        return cd['password2']
+        return cd['password_confirm']  # Исправлено на password_confirm
     
