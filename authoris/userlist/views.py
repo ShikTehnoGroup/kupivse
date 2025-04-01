@@ -1,11 +1,49 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import UserRegistrationForm , LoginForm
 from django.contrib.auth.models import User
-from django.contrib.auth import get_user_model, authenticate,login,authenticate
+from django.contrib.auth import get_user_model, authenticate,login
 from django.contrib import messages
-
+from rest_framework import viewsets,generics, status
+from rest_framework.response import Response
+from .serializers import UserSerializer
+from .models import Users
+from rest_framework.views import APIView
 
 User = get_user_model()
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = Users.objects.all()
+    serializer_class = UserSerializer
+
+class UserDetailByEmail(generics.RetrieveAPIView):
+    serializer_class = UserSerializer
+
+    def get(self, request, *args, **kwargs):
+        print("UserDetailByEmail.get called")  # Логируем вызов метода
+        email = request.query_params.get('email', None)  # Получаем email из параметров запроса
+        print(f"Received email: {email}")  # Логируем полученный email
+        if email is not None:
+            try:
+                user = Users.objects.get(email=email)  # Ищем пользователя по email
+                serializer = self.get_serializer(user)
+                return Response(serializer.data)  # Возвращаем данные пользователя
+            except Users.DoesNotExist:
+                return Response({"detail": "User not found."}, status=status.HTTP_404_NOT_FOUND)
+        return Response({"detail": "Email parameter is required."}, status=status.HTTP_400_BAD_REQUEST)
+
+class AuthView(APIView): # апи аутентификация 
+    def post(self, request):
+        email = request.data.get("email")
+        password = request.data.get("password")
+        
+        user = authenticate(request, email=email, password=password)
+        
+        if user is not None:
+            return Response({"message": "Authentication successful", "user": {"email": user.email}}, status=status.HTTP_200_OK)
+        else:
+            return Response({"detail": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
+
 
 def index(request):
     return render(request, 'userlist/index.html')
